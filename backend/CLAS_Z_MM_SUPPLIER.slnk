@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CLAS CLSNAME="Z_MM_SUPPLIER" VERSION="1" LANGU="E" DESCRIPT="Supplier" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+ <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+ <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <attribute CLSNAME="Z_MM_SUPPLIER" CMPNAME="ADDRESS" VERSION="1" LANGU="E" DESCRIPT="Address" EXPOSURE="2" STATE="1" EDITORDER="3 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="STRING" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_SUPPLIER" CMPNAME="EMAIL" VERSION="1" LANGU="E" DESCRIPT="Email" EXPOSURE="2" STATE="1" EDITORDER="4 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="STRING" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_SUPPLIER" CMPNAME="NAME" VERSION="1" LANGU="E" DESCRIPT="Name 1" EXPOSURE="2" STATE="1" EDITORDER="2 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="NAME1_GP" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_SUPPLIER" CMPNAME="SUPPLIER_ID" VERSION="1" LANGU="E" DESCRIPT="Account Number of Vendor or Creditor" EXPOSURE="2" STATE="1" EDITORDER="1 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="LIFNR" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_SUPPLIER" CMPNAME="TELEPHONE" VERSION="1" LANGU="E" DESCRIPT="Telephone" EXPOSURE="2" STATE="1" EDITORDER="5 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="STRING" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <method CLSNAME="Z_MM_SUPPLIER" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " MTDTYPE="2" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="Z_MM_SUPPLIER" CMPNAME="CONSTRUCTOR" SCONAME="ID" VERSION="1" LANGU="E" DESCRIPT="Account Number of Vendor or Creditor" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="LIFNR"/>
+  <source>method CONSTRUCTOR.
+    data: lv_ADRNR type ADRNR,
+          lv_city  type AD_CITY1,
+          lv_street type AD_STREET,
+          lv_number type AD_TLNMBR1.
+
+    me-&gt;supplier_id = id.
+    select single name1 stras ADRNR from lfa1 into (me-&gt;name, lv_street, lv_ADRNR) where lifnr = id.
+
+    select single city1 tel_number into (lv_city, lv_number)
+            from ADRC
+            where ADDRNUMBER = lv_adrnr and
+                 date_from &lt; sy-datum and
+                 date_to &gt; sy-datum.
+
+    if sy-subrc = 0.
+      CONCATENATE lv_street &apos;,&apos; lv_city into me-&gt;address.
+      me-&gt;telephone = lv_number.
+      me-&gt;email = &apos;test@test.com&apos;.
+    endif.
+  endmethod.</source>
+ </method>
+</CLAS>

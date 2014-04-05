@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CLAS CLSNAME="Z_MM_POITEM" VERSION="1" LANGU="E" DESCRIPT="Pedido de compra" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+ <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+ <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <attribute CLSNAME="Z_MM_POITEM" CMPNAME="BOX_CONVERSION" VERSION="1" LANGU="E" DESCRIPT="Numerator for Conversion to Base Units of Measure" EXPOSURE="2" STATE="1" EDITORDER="6 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="UMREZ" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_POITEM" CMPNAME="DELIVERY_DATE" VERSION="1" LANGU="E" DESCRIPT="Date" EXPOSURE="2" STATE="1" EDITORDER="11 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="DATUM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_POITEM" CMPNAME="DELIVERY_PLANT" VERSION="1" LANGU="E" DESCRIPT="Plant" EXPOSURE="2" STATE="1" EDITORDER="12 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="WERKS_D" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_POITEM" CMPNAME="LAST_NET_PRICE" VERSION="1" LANGU="E" DESCRIPT="Net price" EXPOSURE="2" STATE="1" EDITORDER="8 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="NETPR" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_POITEM" CMPNAME="LAST_ORDER_DATE" VERSION="1" LANGU="E" DESCRIPT="Date" EXPOSURE="2" STATE="1" EDITORDER="10 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="DATUM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_POITEM" CMPNAME="MATERIAL" VERSION="1" LANGU="E" DESCRIPT="Material" EXPOSURE="2" STATE="1" EDITORDER="3 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="MATNR" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_POITEM" CMPNAME="NET_PRICE" VERSION="1" LANGU="E" DESCRIPT="Net price" EXPOSURE="2" STATE="1" EDITORDER="7 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="NETPR" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_POITEM" CMPNAME="NET_VALUE" VERSION="1" LANGU="E" DESCRIPT="Net Value in Document Currency" EXPOSURE="2" STATE="1" EDITORDER="9 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="NETWR" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_POITEM" CMPNAME="PO_ITEM" VERSION="1" LANGU="E" DESCRIPT="Item" EXPOSURE="2" STATE="1" EDITORDER="2 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="EBELP" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_POITEM" CMPNAME="PO_NUMBER" VERSION="1" LANGU="E" DESCRIPT="Nº do documento de compras" EXPOSURE="2" STATE="1" EDITORDER="1 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="EBELN" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_POITEM" CMPNAME="QUANTITY" VERSION="1" LANGU="E" DESCRIPT="Quantidade" EXPOSURE="2" STATE="1" EDITORDER="4 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="MENGE_D" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_POITEM" CMPNAME="UNIT" VERSION="1" LANGU="E" DESCRIPT="Unidade" EXPOSURE="2" STATE="1" EDITORDER="5 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="MEINS" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <method CLSNAME="Z_MM_POITEM" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="Constructor" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " MTDTYPE="2" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="Z_MM_POITEM" CMPNAME="CONSTRUCTOR" SCONAME="I_PONUMBER" VERSION="1" LANGU="E" DESCRIPT="Nº do documento de compras" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="EBELN"/>
+  <parameter CLSNAME="Z_MM_POITEM" CMPNAME="CONSTRUCTOR" SCONAME="I_POITEM" VERSION="1" LANGU="E" DESCRIPT="Item Number of Purchasing Document" CMPTYPE="1" MTDTYPE="2" EDITORDER="2 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="EBELP"/>
+  <source>method CONSTRUCTOR.
+    me-&gt;po_number = i_ponumber.
+    me-&gt;po_item = i_poitem.
+
+    select single matnr menge meins umrez netpr netwr werks
+            from ekpo
+            into (me-&gt;material, me-&gt;quantity, me-&gt;unit, me-&gt;box_conversion, me-&gt;net_price, me-&gt;net_value, me-&gt;delivery_plant)
+            where ebeln = i_ponumber and
+                  ebelp = i_poitem.
+
+    check sy-subrc = 0.
+    select single EINDT from eket into me-&gt;delivery_date where ebeln = i_ponumber and ebelp = i_poitem.
+
+  endmethod.</source>
+ </method>
+</CLAS>

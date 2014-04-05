@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CLAS CLSNAME="Z_MM_PO" VERSION="1" LANGU="E" DESCRIPT="Pedido de compra" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+ <types CLSNAME="Z_MM_PO" CMPNAME="ITEMS" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="4" SRCROW1="9 " SRCCOLUMN1="4 " SRCROW2="9 " SRCCOLUMN2="41 " TYPESRC_LENG="40 " TYPESRC="ITEMS type table of ref to z_mm_poitem
+"/>
+ <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+ <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <attribute CLSNAME="Z_MM_PO" CMPNAME="ADVANCE_PERCENTAGE" VERSION="1" LANGU="E" DESCRIPT="Código de adiantamento" EXPOSURE="2" STATE="1" EDITORDER="2 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="INT4" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_PO" CMPNAME="COMMENTS" VERSION="1" LANGU="E" DESCRIPT="Data de vencimento do adiantamento" EXPOSURE="2" STATE="1" EDITORDER="5 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="STRING" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_PO" CMPNAME="COMPANY" VERSION="1" LANGU="E" DESCRIPT="Empresa" EXPOSURE="2" STATE="1" EDITORDER="7 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="BUKRS" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_PO" CMPNAME="CREATED_BY" VERSION="1" LANGU="E" DESCRIPT="User Name" EXPOSURE="2" STATE="1" EDITORDER="12 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="UNAME" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_PO" CMPNAME="CREATION_DATE" VERSION="1" LANGU="E" DESCRIPT="Data de criação" EXPOSURE="2" STATE="1" EDITORDER="9 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="DATUM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_PO" CMPNAME="CURRENCY" VERSION="1" LANGU="E" DESCRIPT="Currency Key" EXPOSURE="2" STATE="1" EDITORDER="10 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="WAERS" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_PO" CMPNAME="DESTINATION_PLANT" VERSION="1" LANGU="E" DESCRIPT="Montante de adiantamento em moeda do documento" EXPOSURE="2" STATE="1" EDITORDER="3 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="WERKS_D" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_PO" CMPNAME="INCOTERMS" VERSION="1" LANGU="E" DESCRIPT="Incoterms" EXPOSURE="2" STATE="1" EDITORDER="8 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="TEXT20" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_PO" CMPNAME="PAYMENT_TERMS" VERSION="1" LANGU="E" DESCRIPT="Terms of Payment Key" EXPOSURE="2" STATE="1" EDITORDER="11 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="DZTERM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_PO" CMPNAME="PO_NUMBER" VERSION="1" LANGU="E" DESCRIPT="Nº do documento de compras" EXPOSURE="2" STATE="1" EDITORDER="1 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="EBELN" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_PO" CMPNAME="PURCHASING_GROUP" VERSION="1" LANGU="E" DESCRIPT="Porcentagem de adiantamento" EXPOSURE="2" STATE="1" EDITORDER="4 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="EKORG" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_PO" CMPNAME="STATUS" VERSION="1" LANGU="E" DESCRIPT="Status" EXPOSURE="2" STATE="1" EDITORDER="13 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="CHAR2" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="Z_MM_PO" CMPNAME="TOTAL_VALUE" VERSION="1" LANGU="E" DESCRIPT="Código da moeda" EXPOSURE="2" STATE="1" EDITORDER="6 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="NETWR" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <method CLSNAME="Z_MM_PO" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="Constructor" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " MTDTYPE="2" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="Z_MM_PO" CMPNAME="CONSTRUCTOR" SCONAME="I_PONUMBER" VERSION="1" LANGU="E" DESCRIPT="Nº do documento de compras" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="EBELN"/>
+  <source>method constructor.
+    data: lw_ekko type ekko,
+          lv_inco1 type inco1,
+          lv_inco2 type inco2,
+          lt_werks type table of werks_d,
+          lv_werks type werks_d,
+          lv_lines type int4.
+
+    select single k~ebeln k~dpamt k~ekgrp k~waers k~bukrs k~inco1 k~inco2 k~aedat k~zterm k~ernam sum( p~netwr )
+            from ekko as k inner join ekpo as p
+            on k~ebeln = p~ebeln
+            into (me-&gt;po_number, me-&gt;advance_percentage, me-&gt;purchasing_group, me-&gt;currency,
+                  me-&gt;company, lv_inco1, lv_inco2, me-&gt;creation_date, me-&gt;payment_terms, me-&gt;created_by, me-&gt;total_value)
+           where k~ebeln = i_ponumber
+           group by k~ebeln k~dpamt k~ekgrp k~waers k~bukrs k~inco1 k~inco2 k~aedat k~zterm k~ernam.
+
+    check sy-subrc = 0.
+    concatenate lv_inco1 lv_inco2 into me-&gt;incoterms separated by space.
+
+    select DISTINCT werks from ekpo into table lt_werks where ebeln = i_ponumber.
+
+    DESCRIBE TABLE lt_werks lines lv_lines.
+    if lv_lines = 1. &quot;If there is only one plant, fill the attribute.
+      read table lt_werks into lv_werks index 1.
+      me-&gt;destination_plant = lv_werks.
+    endif.
+
+    me-&gt;comments = &apos;....&apos;. &quot; You must change this according to your own text schema.
+
+  endmethod.</source>
+ </method>
+ <method CLSNAME="Z_MM_PO" CMPNAME="GET_CREATED_BY" VERSION="1" LANGU="E" DESCRIPT="Get created by" EXPOSURE="2" STATE="1" EDITORDER="9 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="Z_MM_PO" CMPNAME="GET_CREATED_BY" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="Text, 40 Characters Long" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="TEXT40"/>
+  <source>method GET_CREATED_BY.
+    select single p~name_text from usr21 as k inner join adrp as p
+              on k~persnumber = p~persnumber
+             into return
+            where k~bname = me-&gt;created_by.
+  endmethod.</source>
+ </method>
+ <method CLSNAME="Z_MM_PO" CMPNAME="GET_DEST_PLANT_TEXT" VERSION="1" LANGU="E" DESCRIPT="Get destination plant text" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="Z_MM_PO" CMPNAME="GET_DEST_PLANT_TEXT" SCONAME="RETURN" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="STRING"/>
+  <source>method GET_DEST_PLANT_TEXT.
+    return = me-&gt;destination_plant.
+  endmethod.</source>
+ </method>
+ <method CLSNAME="Z_MM_PO" CMPNAME="GET_ITEMS" VERSION="1" LANGU="E" DESCRIPT="Get items" EXPOSURE="2" STATE="1" EDITORDER="8 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="Z_MM_PO" CMPNAME="GET_ITEMS" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="Items" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZMM_POITENS"/>
+  <source>method GET_ITEMS.
+    data: lv_ebeln type ebeln, lv_ebelp type ebelp,
+          lx_poitem type ref to z_mm_poitem.
+
+    select ebeln ebelp from ekpo into (lv_ebeln, lv_ebelp)
+              where ebeln = me-&gt;po_number.
+      create object lx_poitem
+        exporting
+          i_ponumber = lv_ebeln
+          i_poitem = lv_ebelp.
+      append lx_poitem to return.
+    endselect.
+
+  endmethod.</source>
+ </method>
+ <method CLSNAME="Z_MM_PO" CMPNAME="GET_PAYMENT_TERM_TEXT" VERSION="1" LANGU="E" DESCRIPT="Get payment term text" EXPOSURE="2" STATE="1" EDITORDER="6 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="Z_MM_PO" CMPNAME="GET_PAYMENT_TERM_TEXT" SCONAME="RETURN" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="STRING"/>
+  <source>method GET_PAYMENT_TERM_TEXT.
+    return = me-&gt;payment_terms.
+  endmethod.</source>
+ </method>
+ <method CLSNAME="Z_MM_PO" CMPNAME="GET_PENDING_APPROVAL" VERSION="1" LANGU="E" DESCRIPT="Return POs requiring approval" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="1" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="Z_MM_PO" CMPNAME="GET_PENDING_APPROVAL" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="Pedidos" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZMM_POS"/>
+  <source>method GET_PENDING_APPROVAL.
+
+* This method uses an authorization based filter, to stop the user
+* from having to input a specific release code. The system just checks
+* for every release code the current user can use, and retrieves the POs that can
+* be actionable with those release codes.
+
+* The code used to retrieve the relevant POs is inspired by ME28.
+
+    constants: lc_frggr type frggr value &apos;Z1&apos;. &quot;Release group from Purchase Orders in your system
+    constants: lc_released type frggr value &apos;C&apos;. &quot;Code for &quot;released&quot; in your system
+
+    field-symbols: &lt;f1&gt; type any.
+    data: hfdpos like sy-fdpos.
+    data: p_frgrs type boolean,
+          p_frgse type boolean,
+          p_frgvo type boolean.
+
+    data: lt_ekko type table of ekko,
+          lw_ekko type ekko,
+          lv_name type text60,
+          lt_t16fc type table of t16fc,
+          lw_t16fc type t16fc,
+          lv_tabix type sytabix,
+          lw_t16fs type t16fs,
+          lx_po    type ref to z_mm_po.
+
+    data: xfrg1 type frgzu,
+          xfrg2 type frgzu.
+
+    data: lt_t16fv type table of t16fv,
+          lw_t16fv type t16fv.
+
+    data: begin of key,
+             mandt type mandt,
+             frggr type frggr,
+             frgsx type frgsx,
+          end of key.
+
+    data:  s_frggr type range of t16fc-frggr.
+
+    p_frgse = &apos;X&apos;.
+    p_frgrs = &apos; &apos;.
+    p_frgvo = &apos;X&apos;.
+
+    select * from t16fc into table lt_t16fc.
+    loop at lt_t16fc into lw_t16fc.
+      lv_tabix = sy-tabix.
+      authority-check object &apos;M_EINK_FRG&apos;
+                                          id &apos;FRGCO&apos; field lw_t16fc-frgco
+                                          id &apos;FRGGR&apos; field lw_t16fc-frggr.
+
+      if sy-subrc &lt;&gt; 0.
+        delete lt_t16fc index lv_tabix.
+      endif.
+    endloop.
+    sort lt_t16fc by frggr.
+    delete lt_t16fc where frggr &lt;&gt; lc_frggr.
+
+    loop at lt_t16fc into lw_t16fc.
+      refresh lt_ekko.
+      check lw_t16fc-frgco &lt;&gt; &apos; &apos;.
+      check lw_t16fc-frggr = lc_frggr.
+
+* Check at least of the codes is relevant
+
+      select single * from t16fs into lw_t16fs
+                        where frggr eq lc_frggr
+                          and ( frgc1 eq lw_t16fc-frgco or
+                                frgc2 eq lw_t16fc-frgco or
+                                frgc3 eq lw_t16fc-frgco or
+                                frgc4 eq lw_t16fc-frgco or
+                                frgc5 eq lw_t16fc-frgco or
+                                frgc6 eq lw_t16fc-frgco or
+                                frgc7 eq lw_t16fc-frgco or
+                                frgc8 eq lw_t16fc-frgco ).
+      check sy-subrc = 0.
+      call function &apos;ME_REL_CHECK_MANY&apos;
+        exporting
+          i_frgot = &apos;2&apos;
+          i_frgco = lw_t16fc-frgco
+        tables
+          t_frggr = s_frggr
+          t_t16fv = lt_t16fv.
+      check not lt_t16fv[] is initial.
+      select * from ekko into table lt_ekko
+          for all entries in lt_t16fv
+        where frgke &lt;&gt;  lc_released and frgke &lt;&gt; &apos; &apos;
+          and frgrl eq &apos;X&apos;
+          and frggr eq lc_frggr
+          and frgsx eq lt_t16fv-frgsx
+          and procstat &lt;&gt; &apos;08&apos;
+            .
+
+* Clean EKKO table
+      loop at lt_ekko into lw_ekko.
+        lv_tabix = sy-tabix.
+        move-corresponding lw_ekko to key.
+        read table lt_t16fv into lw_t16fv with key
+                                 frggr = key-frggr
+                                 frgsx = key-frgsx binary search.
+        check sy-subrc eq 0.
+        xfrg1 = lw_t16fv+9(8).
+        xfrg2 = lw_ekko-frgzu.
+        translate xfrg2 using &apos;X  +&apos;.
+        overlay xfrg1 with xfrg2 only &apos;+&apos;.
+        search xfrg1 for &apos;X&apos;.
+
+        if sy-subrc ne 0.
+          delete lt_ekko index lv_tabix.
+          continue.
+        else.
+          hfdpos = sy-fdpos.
+          assign xfrg2+sy-fdpos(1) to &lt;f1&gt;.
+          if  p_frgrs eq space and
+             &lt;f1&gt; eq space.
+            delete lt_ekko index lv_tabix.
+            continue.
+          else.
+            if  p_frgse eq space and
+              &lt;f1&gt; ne space.
+              delete lt_ekko index lv_tabix.
+              continue.
+            else.
+              if xfrg1 ca &apos;+&apos; and
+                 p_frgvo ne space.
+                delete lt_ekko index lv_tabix.
+                continue.
+              endif.
+            endif.
+          endif.
+        endif.
+      endloop.
+      if not lt_ekko[] is initial.
+        loop at lt_ekko into lw_ekko.
+          create object lx_po
+            exporting
+              i_ponumber = lw_ekko-ebeln.
+          append lx_po to return.
+        endloop.
+      endif.
+    endloop.
+  endmethod.</source>
+ </method>
+ <method CLSNAME="Z_MM_PO" CMPNAME="GET_PGROUP_TEXT" VERSION="1" LANGU="E" DESCRIPT="Get purchase group text" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="Z_MM_PO" CMPNAME="GET_PGROUP_TEXT" SCONAME="RETURN" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="STRING"/>
+  <source>method GET_PGROUP_TEXT.
+    select single EKNAM from T024 into return where ekgrp = me-&gt;purchasing_group.
+  endmethod.</source>
+ </method>
+ <method CLSNAME="Z_MM_PO" CMPNAME="GET_RELEASE_CODE" VERSION="1" LANGU="E" DESCRIPT="Get current release code" EXPOSURE="2" STATE="1" EDITORDER="11 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="Z_MM_PO" CMPNAME="GET_RELEASE_CODE" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="Release code" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="FRGCO"/>
+  <source>method get_release_code.
+
+* This method uses an authorization based filter, to figure out which release code
+* the current user would use if he was releasing the document in ME28. It assumes that at
+* a given point, a user would only have one release code available for each PO, which makes
+* sense for non-power users.
+
+* The code used to retrieve the release code is inspired by ME28.
+
+    constants: lc_frggr type frggr value &apos;Z1&apos;. &quot;Release group from Purchase Orders in your system
+    constants: lc_released type frggr value &apos;C&apos;. &quot;Code for &quot;released&quot; in your system
+
+    field-symbols: &lt;f1&gt; type any.
+    data: hfdpos like sy-fdpos.
+    data: p_frgrs type boolean,
+          p_frgse type boolean,
+          p_frgvo type boolean.
+
+    data:
+          lw_ekko type ekko,
+          lv_name type text60,
+          lt_t16fc type table of t16fc,
+          lw_t16fc type t16fc,
+          lv_tabix type sytabix,
+          lw_t16fs type t16fs,
+          lx_po    type ref to z_mm_po.
+
+    data: xfrg1 type frgzu,
+          xfrg2 type frgzu.
+
+    data: lt_t16fv type table of t16fv,
+          lw_t16fv type t16fv.
+
+    data: begin of key,
+             mandt type mandt,
+             frggr type frggr,
+             frgsx type frgsx,
+          end of key.
+
+    data:  s_frggr type range of t16fc-frggr.
+
+    p_frgse = &apos;X&apos;.
+    p_frgrs = &apos; &apos;.
+    p_frgvo = &apos;X&apos;.
+
+    select * from t16fc into table lt_t16fc.
+    loop at lt_t16fc into lw_t16fc.
+      lv_tabix = sy-tabix.
+      authority-check object &apos;M_EINK_FRG&apos;
+                                          id &apos;FRGCO&apos; field lw_t16fc-frgco
+                                          id &apos;FRGGR&apos; field lw_t16fc-frggr.
+
+      if sy-subrc &lt;&gt; 0.
+        delete lt_t16fc index lv_tabix.
+      endif.
+    endloop.
+    sort lt_t16fc by frggr.
+    delete lt_t16fc where frggr &lt;&gt; lc_frggr.
+
+    loop at lt_t16fc into lw_t16fc.
+
+      check lw_t16fc-frgco &lt;&gt; &apos; &apos;.
+      check lw_t16fc-frggr = lc_frggr.
+
+* Check at least of the codes is relevant
+
+      select single * from t16fs into lw_t16fs
+                        where frggr eq lc_frggr
+                          and ( frgc1 eq lw_t16fc-frgco or
+                                frgc2 eq lw_t16fc-frgco or
+                                frgc3 eq lw_t16fc-frgco or
+                                frgc4 eq lw_t16fc-frgco or
+                                frgc5 eq lw_t16fc-frgco or
+                                frgc6 eq lw_t16fc-frgco or
+                                frgc7 eq lw_t16fc-frgco or
+                                frgc8 eq lw_t16fc-frgco ).
+      check sy-subrc = 0.
+      call function &apos;ME_REL_CHECK_MANY&apos;
+        exporting
+          i_frgot = &apos;2&apos;
+          i_frgco = lw_t16fc-frgco
+        tables
+          t_frggr = s_frggr
+          t_t16fv = lt_t16fv.
+      check not lt_t16fv[] is initial.
+      select * from ekko into lw_ekko
+          for all entries in lt_t16fv
+        where frgke &lt;&gt;  lc_released and frgke &lt;&gt; &apos; &apos;
+          and frgrl eq &apos;X&apos;
+          and frggr eq lc_frggr
+          and frgsx eq lt_t16fv-frgsx
+          and procstat &lt;&gt; &apos;08&apos;
+          and ebeln = me-&gt;po_number.
+      endselect.
+      check sy-subrc = 0.
+
+      lv_tabix = sy-tabix.
+      move-corresponding lw_ekko to key.
+      read table lt_t16fv into lw_t16fv with key
+                               frggr = key-frggr
+                               frgsx = key-frgsx binary search.
+      check sy-subrc eq 0.
+      xfrg1 = lw_t16fv+9(8).
+      xfrg2 = lw_ekko-frgzu.
+      translate xfrg2 using &apos;X  +&apos;.
+      overlay xfrg1 with xfrg2 only &apos;+&apos;.
+      search xfrg1 for &apos;X&apos;.
+
+      if sy-subrc ne 0.
+        continue.
+      else.
+        hfdpos = sy-fdpos.
+        assign xfrg2+sy-fdpos(1) to &lt;f1&gt;.
+        if  p_frgrs eq space and
+           &lt;f1&gt; eq space.
+          continue.
+        else.
+          if  p_frgse eq space and
+            &lt;f1&gt; ne space.
+            continue.
+          else.
+            if xfrg1 ca &apos;+&apos; and
+               p_frgvo ne space.
+              continue.
+            endif.
+          endif.
+        endif.
+      endif.
+      return = lw_t16fc-frgco.
+      return.
+    endloop.
+  endmethod.</source>
+ </method>
+ <method CLSNAME="Z_MM_PO" CMPNAME="GET_STATUS" VERSION="1" LANGU="E" DESCRIPT="Get Status" EXPOSURE="2" STATE="1" EDITORDER="10 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="Z_MM_PO" CMPNAME="GET_STATUS" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="Version Number Component" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="CHAR2"/>
+  <source>method GET_STATUS.
+    return = &apos;P&apos;.
+  endmethod.</source>
+ </method>
+ <method CLSNAME="Z_MM_PO" CMPNAME="GET_SUPPLIER" VERSION="1" LANGU="E" DESCRIPT="Get supplier" EXPOSURE="2" STATE="1" EDITORDER="7 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="Z_MM_PO" CMPNAME="GET_SUPPLIER" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="Supplier" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="Z_MM_SUPPLIER"/>
+  <source>method GET_SUPPLIER.
+    data: lv_lifnr type lifnr.
+
+    select single lifnr from ekko into lv_lifnr where ebeln = po_number.
+    create object return
+     EXPORTING
+       id = lv_lifnr.
+
+  endmethod.</source>
+ </method>
+ <method CLSNAME="Z_MM_PO" CMPNAME="SET_APPROVAL" VERSION="1" LANGU="E" DESCRIPT="Set approval of the purchase order" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="Z_MM_PO" CMPNAME="SET_APPROVAL" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="Parâmetro de retorno" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="BAPIRET2"/>
+  <source>method SET_APPROVAL.
+    data: lt_return type table of bapireturn,
+          lw_return type bapireturn.
+
+    call function &apos;BAPI_PO_RELEASE&apos;
+      exporting
+        purchaseorder          = me-&gt;po_number
+        po_rel_code            = me-&gt;get_release_code( )
+      tables
+        return                 = lt_return
+      exceptions
+        authority_check_fail   = 1
+        document_not_found     = 2
+        enqueue_fail           = 3
+        prerequisite_fail      = 4
+        release_already_posted = 5
+        responsibility_fail    = 6
+        others                 = 7.
+    loop at lt_return into lw_return where type = &apos;E&apos;.
+      return = lw_return-message.
+    endloop.
+    commit work and wait.
+  endmethod.</source>
+ </method>
+ <method CLSNAME="Z_MM_PO" CMPNAME="SET_REJECTED" VERSION="1" LANGU="E" DESCRIPT="Set rejected" EXPOSURE="2" STATE="1" EDITORDER="12 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="Z_MM_PO" CMPNAME="SET_REJECTED" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="Return Parameter" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="BAPIRET2"/>
+  <source>method set_rejected.
+    data: lc_po       type ref to cl_po_header_handle_mm,
+          ls_document type mepo_document.
+
+*  prepare creation of PO instance
+    ls_document-doc_type    = &apos;F&apos;.
+    ls_document-process     = mmpur_po_process.
+    ls_document-trtyp       = &apos;V&apos;.
+    ls_document-doc_key(10) = me-&gt;po_number.
+    ls_document-initiator-initiator = mmpur_initiator_rel.
+
+*  object creation and initialization
+    create object lc_po.
+    lc_po-&gt;for_bapi = &apos;X&apos;.
+    call method lc_po-&gt;po_initialize( im_document = ls_document ).
+    call method lc_po-&gt;set_po_number( im_po_number = me-&gt;po_number ).
+    call method lc_po-&gt;set_state( cl_po_header_handle_mm=&gt;c_available ).
+
+*  read purchase order from database
+    call method lc_po-&gt;po_read
+      exporting
+        im_tcode     = &apos;ME29N&apos;
+        im_trtyp     = ls_document-trtyp
+        im_aktyp     = ls_document-trtyp
+        im_po_number = po_number
+        im_document  = ls_document.
+
+    if lc_po-&gt;if_releasable_mm~is_rejection_allowed( ) = &apos;X&apos;.
+      call method lc_po-&gt;if_releasable_mm~reject
+        exporting
+          im_reset = space
+        exceptions
+          failed   = 1
+          others   = 2.
+      if sy-subrc &lt;&gt; 0.
+        return-type = &apos;E&apos;.
+        return.
+      endif.
+    endif.
+
+    call method lc_po-&gt;po_post
+      exceptions
+        failure = 1
+        others  = 2.
+  endmethod.</source>
+ </method>
+</CLAS>

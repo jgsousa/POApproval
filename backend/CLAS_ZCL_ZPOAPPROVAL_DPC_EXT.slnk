@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CLAS CLSNAME="ZCL_ZPOAPPROVAL_DPC_EXT" VERSION="1" LANGU="E" DESCRIPT="Data Provider Secondary Class" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" CHGDANYBY="DELOITTE" CLSCCINCL="X" FIXPT="X" UNICODE="X" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 " REFCLSNAME="ZCL_ZPOAPPROVAL_DPC">
+ <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+ <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <inheritance CLSNAME="ZCL_ZPOAPPROVAL_DPC_EXT" REFCLSNAME="ZCL_ZPOAPPROVAL_DPC" VERSION="1" STATE="1">
+  <redefinition CLSNAME="ZCL_ZPOAPPROVAL_DPC_EXT" REFCLSNAME="ZCL_ZPOAPPROVAL_DPC" VERSION="1" MTDNAME="PURCHASEORDERITE_GET_ENTITY" EXPOSURE="1"/>
+  <redefinition CLSNAME="ZCL_ZPOAPPROVAL_DPC_EXT" REFCLSNAME="ZCL_ZPOAPPROVAL_DPC" VERSION="1" MTDNAME="PURCHASEORDERITE_GET_ENTITYSET" EXPOSURE="1"/>
+  <redefinition CLSNAME="ZCL_ZPOAPPROVAL_DPC_EXT" REFCLSNAME="ZCL_ZPOAPPROVAL_DPC" VERSION="1" MTDNAME="PURCHASEORDERITE_UPDATE_ENTITY" EXPOSURE="1"/>
+  <redefinition CLSNAME="ZCL_ZPOAPPROVAL_DPC_EXT" REFCLSNAME="ZCL_ZPOAPPROVAL_DPC" VERSION="1" MTDNAME="PURCHASEORDERSET_GET_ENTITY" EXPOSURE="1"/>
+  <redefinition CLSNAME="ZCL_ZPOAPPROVAL_DPC_EXT" REFCLSNAME="ZCL_ZPOAPPROVAL_DPC" VERSION="1" MTDNAME="PURCHASEORDERSET_GET_ENTITYSET" EXPOSURE="1"/>
+  <redefinition CLSNAME="ZCL_ZPOAPPROVAL_DPC_EXT" REFCLSNAME="ZCL_ZPOAPPROVAL_DPC" VERSION="1" MTDNAME="PURCHASEORDERSET_UPDATE_ENTITY" EXPOSURE="1"/>
+  <redefinition CLSNAME="ZCL_ZPOAPPROVAL_DPC_EXT" REFCLSNAME="ZCL_ZPOAPPROVAL_DPC" VERSION="1" MTDNAME="SUPPLIERSET_GET_ENTITY" EXPOSURE="1"/>
+  <redefinition CLSNAME="ZCL_ZPOAPPROVAL_DPC_EXT" REFCLSNAME="ZCL_ZPOAPPROVAL_DPC" VERSION="1" MTDNAME="SUPPLIERSET_GET_ENTITYSET" EXPOSURE="1"/>
+ </inheritance>
+ <method CLSNAME="ZCL_ZPOAPPROVAL_DPC" CMPNAME="PURCHASEORDERITE_GET_ENTITY" VERSION="0" EXPOSURE="0" STATE="0" EDITORDER="0 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <source>method purchaseorderite_get_entity.
+    data: ls_data type zcl_zpoapproval_mpc=&gt;ts_purchaseorderitem,
+          lv_hora  type char20,
+          lx_po    type ref to z_mm_po,
+          lx_poitem type ref to z_mm_poitem,
+          lt_poitem type table of ref to z_mm_poitem,
+          lv_poid  type ebeln,
+          lv_char  type char20.
+
+    field-symbols:
+     &lt;key&gt; type /iwbep/s_mgw_name_value_pair,
+     &lt;key_item&gt; type /iwbep/s_mgw_name_value_pair,
+     &lt;fs_dados&gt; type zcl_zpoapproval_mpc=&gt;tt_purchaseorderitem,
+     &lt;range&gt; type any.
+
+    data:
+          lw_navigation type line of /iwbep/t_mgw_navigation_path.
+
+    read table it_key_tab assigning &lt;key&gt; with key name = &apos;PurchaseOrderID&apos;. &quot;Get the first level key
+    if not it_navigation_path is initial. &quot; Navigation must provided, because we need to get
+                                          &quot; a specific item
+      read table it_navigation_path into lw_navigation with key nav_prop = &apos;PurchaseOrderItemSet&apos;.
+      read table lw_navigation-key_tab assigning &lt;key_item&gt; with key name = &apos;PurchaseOrderItemID&apos;.
+
+      if sy-subrc = 0.
+        lv_poid = &lt;key&gt;-value. &quot; Use the first level key to get the PO
+        create object lx_po
+          exporting
+            i_ponumber = lv_poid.
+        lt_poitem = lx_po-&gt;get_items( ).
+        loop at lt_poitem into lx_poitem.
+          check lx_poitem-&gt;po_item = &lt;key_item&gt;-value+10(5). &quot; Filter according to item
+          concatenate lx_poitem-&gt;po_number lx_poitem-&gt;po_item into ls_data-purchaseorderitemid.
+          er_entity-purchaseorderitemid = &lt;key_item&gt;-value.
+          er_entity-material = lx_poitem-&gt;material.
+          write lx_poitem-&gt;quantity to lv_char unit lx_poitem-&gt;unit.
+          er_entity-quantity = lv_char.
+          er_entity-unit = lx_poitem-&gt;unit.
+          er_entity-convertionbase = lx_poitem-&gt;box_conversion.
+          write lx_poitem-&gt;net_price to lv_char currency lx_po-&gt;currency.
+          er_entity-netprice = lv_char.
+          write lx_poitem-&gt;net_value to lv_char currency lx_po-&gt;currency.
+          er_entity-netvalue = lv_char.
+
+          write lx_poitem-&gt;delivery_date to lv_char using edit mask &apos;YYYY-MM-DD&apos;.
+          er_entity-deliverydate = lv_char.
+
+          er_entity-deliveryplant = lx_poitem-&gt;delivery_plant.
+        endloop.
+      endif.
+    endif.
+  endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_ZPOAPPROVAL_DPC" CMPNAME="PURCHASEORDERITE_GET_ENTITYSET" VERSION="0" EXPOSURE="0" STATE="0" EDITORDER="0 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <source>method purchaseorderite_get_entityset.
+    data: ls_data type zcl_zpoapproval_mpc=&gt;ts_purchaseorderitem,
+          lv_hora  type char20,
+          lx_po    type ref to z_mm_po,
+          lx_poitem type ref to z_mm_poitem,
+          lt_poitem type table of ref to z_mm_poitem,
+          lv_poid  type ebeln,
+          lv_char  type char20.
+
+    field-symbols:
+     &lt;key&gt; type /iwbep/s_mgw_name_value_pair,
+     &lt;key_item&gt; type /iwbep/s_mgw_name_value_pair,
+     &lt;fs_dados&gt; type zcl_zpoapproval_mpc=&gt;tt_purchaseorderitem,
+     &lt;range&gt; type any.
+
+    data:
+          lw_navigation type line of /iwbep/t_mgw_navigation_path.
+
+    read table it_key_tab assigning &lt;key&gt; with key name = &apos;PurchaseOrderID&apos;.
+    if not it_navigation_path is initial.
+      read table it_navigation_path into lw_navigation with key nav_prop = &apos;PurchaseOrderItemSet&apos;.
+      if sy-subrc = 0.
+        lv_poid = &lt;key&gt;-value.
+        create object lx_po
+          exporting
+            i_ponumber = lv_poid.
+        lt_poitem = lx_po-&gt;get_items( ).
+        loop at lt_poitem into lx_poitem.
+          concatenate lx_poitem-&gt;po_number lx_poitem-&gt;po_item into ls_data-purchaseorderitemid.
+          select single maktx from makt into ls_data-material
+               where matnr = lx_poitem-&gt;material and
+                     spras = sy-langu.
+
+          write lx_poitem-&gt;quantity to lv_char unit lx_poitem-&gt;unit.
+          ls_data-quantity = lv_char.
+          ls_data-unit = lx_poitem-&gt;unit.
+          ls_data-convertionbase = lx_poitem-&gt;box_conversion.
+          write lx_poitem-&gt;net_price to lv_char currency lx_po-&gt;currency.
+          ls_data-netprice = lv_char.
+          write lx_poitem-&gt;net_value to lv_char currency lx_po-&gt;currency.
+          ls_data-netvalue = lv_char.
+
+          ls_data-deliverydate = lx_poitem-&gt;delivery_date.
+          ls_data-deliveryplant = lx_poitem-&gt;delivery_plant.
+          append ls_data to et_entityset.
+        endloop.
+      endif.
+    endif.
+  endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_ZPOAPPROVAL_DPC" CMPNAME="PURCHASEORDERITE_UPDATE_ENTITY" VERSION="0" EXPOSURE="0" STATE="0" EDITORDER="0 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <source>method PURCHASEORDERITE_UPDATE_ENTITY.
+**try.
+*CALL METHOD SUPER-&gt;PURCHASEORDERITE_UPDATE_ENTITY
+*  EXPORTING
+*    IV_ENTITY_NAME          =
+*    IV_ENTITY_SET_NAME      =
+*    IV_SOURCE_NAME          =
+*    IT_KEY_TAB              =
+**    io_tech_request_context =
+*    IT_NAVIGATION_PATH      =
+**    io_data_provider        =
+**  importing
+**    er_entity               =
+*    .
+** catch /iwbep/cx_mgw_busi_exception .
+** catch /iwbep/cx_mgw_tech_exception .
+**endtry.
+  endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_ZPOAPPROVAL_DPC" CMPNAME="PURCHASEORDERSET_GET_ENTITY" VERSION="0" EXPOSURE="0" STATE="0" EDITORDER="0 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <source>method purchaseorderset_get_entity.
+    data: ls_data type zcl_zpoapproval_mpc=&gt;ts_purchaseorder,
+          lv_time  type char20,
+          lt_pos  type table of ref to z_mm_po,
+          lx_po   type ref to z_mm_po,
+          lv_po   type ebeln.
+
+    field-symbols:
+     &lt;key&gt; type /iwbep/s_mgw_name_value_pair,
+     &lt;fs_data&gt; type zcl_zpoapproval_mpc=&gt;tt_purchaseorder,
+     &lt;range&gt; type any.
+
+    data:
+          lw_filter type /iwbep/s_mgw_select_option,
+          sl_option type range of string.
+
+    read table it_key_tab assigning &lt;key&gt; index 1.
+    if it_navigation_path is initial. &quot;It will always be initial because we didn&apos;t define
+                                      &quot;navigation to the purchase order
+
+      lv_po = &lt;key&gt;-value. &quot; Get the key provided in the URL
+      create object lx_po
+        exporting
+          i_ponumber = lv_po.
+
+      &quot; Fill the entity data to be returned.
+      er_entity-purchaseorderid = lx_po-&gt;po_number.
+      er_entity-destinationplant = lx_po-&gt;get_dest_plant_text( ).
+      er_entity-purchasegroup = lx_po-&gt;get_pgroup_text( ).
+      er_entity-previousapprovalcomments = lx_po-&gt;comments.
+      er_entity-totalvalue = lx_po-&gt;total_value.
+      er_entity-advancepercentage = lx_po-&gt;advance_percentage.
+      er_entity-incoterms = lx_po-&gt;incoterms.
+      er_entity-currency = lx_po-&gt;currency.
+      er_entity-paymentterms = lx_po-&gt;get_payment_term_text( ).
+      er_entity-createdby = lx_po-&gt;get_created_by( ).
+      er_entity-date = lx_po-&gt;creation_date.
+      er_entity-status = lx_po-&gt;get_status( ).
+    endif.
+  endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_ZPOAPPROVAL_DPC" CMPNAME="PURCHASEORDERSET_GET_ENTITYSET" VERSION="0" EXPOSURE="0" STATE="0" EDITORDER="0 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <source>method purchaseorderset_get_entityset.
+
+    data: ls_data type zcl_zpoapproval_mpc=&gt;ts_purchaseorder,
+          lv_time  type char20,
+          lt_pos  type table of ref to z_mm_po,
+          lx_po   type ref to z_mm_po.
+
+    field-symbols:
+     &lt;key&gt; type /iwbep/s_mgw_name_value_pair,
+     &lt;fs_data&gt; type zcl_zpoapproval_mpc=&gt;tt_purchaseorder,
+     &lt;range&gt; type any.
+
+    data:
+          lw_filter type /iwbep/s_mgw_select_option,
+          sl_option type range of string.
+
+* Get available filters. In these case the filtering capability is limited to the
+* purchase order ID because that is the filter used by the search functionality
+* in the SAPUI5 app.
+    read table it_filter_select_options into lw_filter with key property = &apos;PurchaseOrderID&apos;.
+    if sy-subrc = 0.
+      sl_option = lw_filter-select_options[].
+    endif.
+
+    if it_navigation_path is initial. &quot;It will always be initial because we didn&apos;t define
+                                      &quot;navigation to the purchase order
+      call method z_mm_po=&gt;get_pending_approval  &quot;
+        receiving
+          return = lt_pos.
+      loop at lt_pos into lx_po.
+        ls_data-purchaseorderid = lx_po-&gt;po_number.
+        check lx_po-&gt;po_number in sl_option. &quot; Suboptimal, but like I said, the filter is irrelevant, and
+                                             &quot; only for demo purposes
+
+        &quot; Here we fill the entity data to be returned.
+        ls_data-destinationplant = lx_po-&gt;get_dest_plant_text( ).
+        ls_data-purchasegroup = lx_po-&gt;get_pgroup_text( ).
+        ls_data-previousapprovalcomments = lx_po-&gt;comments.
+        ls_data-totalvalue = lx_po-&gt;total_value.
+        ls_data-advancepercentage = lx_po-&gt;advance_percentage.
+        ls_data-incoterms = lx_po-&gt;incoterms.
+        ls_data-currency = lx_po-&gt;currency.
+        ls_data-paymentterms = lx_po-&gt;get_payment_term_text( ).
+        ls_data-createdby = lx_po-&gt;get_created_by( ).
+        ls_data-date = lx_po-&gt;creation_date.
+        ls_data-status = lx_po-&gt;get_status( ).
+        append ls_data to et_entityset.
+      endloop.
+    endif.
+  endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_ZPOAPPROVAL_DPC" CMPNAME="PURCHASEORDERSET_UPDATE_ENTITY" VERSION="0" EXPOSURE="0" STATE="0" EDITORDER="0 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <source>method purchaseorderset_update_entity.
+
+    data:  lx_po     type ref to z_mm_po,
+           lv_po     type ebeln,
+           lw_return type bapiret2,
+           lw_data   type zcl_zpoapproval_mpc=&gt;ts_purchaseorder.
+
+    field-symbols: &lt;key&gt; type line of /iwbep/t_mgw_name_value_pair,
+                   &lt;data&gt; type zcl_zpoapproval_mpc=&gt;ts_purchaseorder.
+
+    assign lw_data to &lt;data&gt;.
+
+    read table it_key_tab assigning &lt;key&gt; with key name = &apos;PurchaseOrderID&apos;.
+    if sy-subrc = 0.
+      io_data_provider-&gt;read_entry_data( importing es_data = &lt;data&gt; ).
+      if &lt;data&gt;-approved = &apos;X&apos;. &quot; Approved. It&apos;s the only change relevant in the model.
+        lv_po = &lt;key&gt;-value.
+        create object lx_po
+          exporting
+            i_ponumber = lv_po.
+        call method lx_po-&gt;set_approval
+          receiving
+            return = lw_return.
+        if lw_return-type = &apos;E&apos;.
+          raise exception type /iwbep/cx_mgw_busi_exception.
+        else.
+          return.
+        endif.
+      elseif &lt;data&gt;-approved = &apos;R&apos;. &quot;Rejected
+        lv_po = &lt;key&gt;-value.
+        create object lx_po
+          exporting
+            i_ponumber = lv_po.
+        call method lx_po-&gt;set_rejected
+          RECEIVING
+            return = lw_return.
+        if lw_return-type = &apos;E&apos;.
+          raise exception type /iwbep/cx_mgw_busi_exception.
+        else.
+          return.
+        endif.
+      endif.
+    endif.
+    raise exception type /iwbep/cx_mgw_busi_exception.
+  endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_ZPOAPPROVAL_DPC" CMPNAME="SUPPLIERSET_GET_ENTITY" VERSION="0" EXPOSURE="0" STATE="0" EDITORDER="0 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <source>method supplierset_get_entity.
+
+    data: ls_data type zcl_zpoapproval_mpc=&gt;ts_supplier,
+          lv_hora  type char20,
+          lx_po    type ref to z_mm_po,
+          lx_sup   type ref to z_mm_supplier,
+          lv_poid  type ebeln.
+
+
+    field-symbols:
+     &lt;key&gt; type /iwbep/s_mgw_name_value_pair,
+     &lt;key_cont&gt; type /iwbep/s_mgw_name_value_pair,
+     &lt;fs_dados&gt; type zcl_zpoapproval_mpc=&gt;tt_supplier,
+     &lt;range&gt; type any.
+
+    data:
+          lw_navigation type line of /iwbep/t_mgw_navigation_path.
+
+    read table it_key_tab assigning &lt;key&gt; with key name = &apos;PurchaseOrderID&apos;.
+    if not it_navigation_path is initial.
+      read table it_navigation_path into lw_navigation with key nav_prop = &apos;SupplierSet&apos;.
+      if sy-subrc = 0.
+        lv_poid = &lt;key&gt;-value.
+        create object lx_po
+          exporting
+            i_ponumber = lv_poid.
+        lx_sup = lx_po-&gt;get_supplier( ).
+        er_entity-supplierid = lx_sup-&gt;supplier_id.
+        er_entity-name = lx_sup-&gt;name.
+        er_entity-address = lx_sup-&gt;address.
+        er_entity-email = lx_sup-&gt;email.
+        er_entity-telephone = lx_sup-&gt;telephone.
+      endif.
+    endif.
+
+
+  endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_ZPOAPPROVAL_DPC" CMPNAME="SUPPLIERSET_GET_ENTITYSET" VERSION="0" EXPOSURE="0" STATE="0" EDITORDER="0 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <source>method SUPPLIERSET_GET_ENTITYSET.
+    data: ls_data type zcl_zpoapproval_mpc=&gt;ts_supplier,
+          lv_hora  type char20,
+          lx_po    type ref to z_mm_po,
+          lx_sup   type ref to z_mm_supplier,
+          lv_poid  type ebeln.
+
+
+    field-symbols:
+     &lt;key&gt; type /iwbep/s_mgw_name_value_pair,
+     &lt;key_cont&gt; type /iwbep/s_mgw_name_value_pair,
+     &lt;fs_dados&gt; type zcl_zpoapproval_mpc=&gt;tt_supplier,
+     &lt;range&gt; type any.
+
+    data:
+          lw_navigation type line of /iwbep/t_mgw_navigation_path.
+
+    read table it_key_tab assigning &lt;key&gt; with key name = &apos;PurchaseOrderID&apos;.
+    if not it_navigation_path is initial.
+      read table it_navigation_path into lw_navigation with key nav_prop = &apos;SupplierSet&apos;.
+      if sy-subrc = 0.
+        lv_poid = &lt;key&gt;-value.
+        create object lx_po
+          exporting
+            i_ponumber = lv_poid.
+        lx_sup = lx_po-&gt;get_supplier( ).
+        ls_data-supplierid = lx_sup-&gt;supplier_id.
+        ls_data-name = lx_sup-&gt;name.
+        ls_data-address = lx_sup-&gt;address.
+        ls_data-email = lx_sup-&gt;email.
+        ls_data-telephone = lx_sup-&gt;telephone.
+        append ls_data to et_entityset.
+      endif.
+    endif.
+  endmethod.</source>
+ </method>
+</CLAS>
