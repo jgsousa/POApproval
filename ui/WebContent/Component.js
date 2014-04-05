@@ -19,8 +19,8 @@ sap.ui.core.UIComponent.extend("sap.ui.sousa.PoApproval.Component", {
 		oView.setModel(i18nModel, "i18n");
 
 		// Using OData model to connect against a real service
-		var url = "proxy/http/sapretail.deloitte.pt:8000/sap/opu/odata/sap/ZPOAPPROVAL_SRV/";
-		var oModel = new sap.ui.model.odata.ODataModel(url, true, "deloitte", "deloitte2024");
+		var url = "proxy/http/<host>:<port>/sap/opu/odata/sap/ZPOAPPROVAL_SRV/";
+		var oModel = new sap.ui.model.odata.ODataModel(url, true, "<user>", "<password>");
 		oView.setModel(oModel);
 
 		// set device model
