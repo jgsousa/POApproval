@@ -1,0 +1,45 @@
+<core:View controllerName="sap.ui.sousa.PoApproval.view.Master"
+	xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Page title="{i18n>MasterTitle}">
+		<subHeader>
+			<Bar>
+				<contentLeft>
+					<SearchField search="handleSearch" width="100%">
+					</SearchField>
+				</contentLeft>
+			</Bar>
+		</subHeader>
+		<List id="list" mode="{device>/listMode}" select="handleListSelect"
+			items="{/PurchaseOrderSet}">
+			<ObjectListItem type="{device>/listItemType}" press="handleListItemPress"
+				title="{PurchaseOrderID}" number="{totalValue}" numberUnit="{currency}">
+				<attributes>
+					<ObjectAttribute text="{purchaseGroup}" />
+				</attributes>
+				<firstStatus>
+					<ObjectStatus
+						text="{
+							path: 'status',
+							formatter: 'sap.ui.sousa.PoApproval.util.Formatter.statusText'
+						}"
+						state="{
+							path: 'status',
+							formatter: 'sap.ui.sousa.PoApproval.util.Formatter.statusState'
+						}" />
+				</firstStatus>
+			</ObjectListItem>
+		</List>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Select id="groupSelect" change="handleGroup" icon="sap-icon://group-2"
+						type="IconOnly" selectedKey="None" autoAdjustWidth="true">
+						<core:Item key="None" text="{i18n>MasterGroupNone}" />
+						<core:Item key="totalValue" text="{i18n>MasterGroupAmount}" />
+						<core:Item key="LifecycleStatus" text="{i18n>MasterGroupStatus}" />
+					</Select>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

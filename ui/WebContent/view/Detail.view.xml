@@ -1,0 +1,103 @@
+<core:View controllerName="sap.ui.sousa.PoApproval.view.Detail"
+	xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Page title="{i18n>DetailTitle}" class="sapUiFioriObjectPage"
+		showNavButton="{device>/isPhone}" navButtonPress="handleNavButtonPress">
+		<ObjectHeader title="{PurchaseOrderID}" number="{totalValue}"
+			numberUnit="{currency}">
+			<attributes>
+				<ObjectAttribute text="{purchaseGroup}" />
+				<ObjectAttribute text="{createdBy}" />
+				<ObjectAttribute
+					text="{
+					path: 'date',
+					formatter: 'sap.ui.sousa.PoApproval.util.Formatter.date'
+				}" />
+			</attributes>
+			<firstStatus>
+				<ObjectStatus
+					text="{
+						path: 'status',
+						formatter: 'sap.ui.sousa.PoApproval.util.Formatter.statusText'
+					}"
+					state="{
+						path: 'status',
+						formatter: 'sap.ui.sousa.PoApproval.util.Formatter.statusState'
+					}" />
+			</firstStatus>
+		</ObjectHeader>
+		<IconTabBar expanded="{device>/isNoPhone}">
+			<items>
+				<IconTabFilter icon="sap-icon://supplier">
+					<form:SimpleForm id="SupplierForm" minWidth="1024">
+						<core:Title text="Address" />
+						<Label text="Name" />
+						<Text text="{name}" />
+						<Label text="City" />
+						<Text text="{address}" />
+						<Label text="E-Mail" />
+						<Text text="{email}" />
+					</form:SimpleForm>
+				</IconTabFilter>
+			</items>
+			<items>
+				<IconTabFilter icon="sap-icon://comment">
+					<form:SimpleForm id="CommentsForm" minWidth="1024">
+						<core:Title text="Previous Comments" />
+						<Label text="Comment" />
+						<Text text="{previousApprovalComments}" />
+					</form:SimpleForm>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+		<Table headerText="{i18n>LineItemTableHeader}" items="{PurchaseOrderItemSet}">
+			<columns>
+				<Column>
+					<header>
+						<Label text="Product" />
+					</header>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+					<header>
+						<Label text="Delivery Date" />
+					</header>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+					<header>
+						<Label text="Quantity" />
+					</header>
+				</Column>
+				<Column hAlign="Right">
+					<header>
+						<Label text="Price" />
+					</header>
+				</Column>
+			</columns>
+			<ColumnListItem>
+				<cells>
+					<ObjectIdentifier title="{material}" />
+					<Text
+						text="{
+							path:'deliveryDate',
+							formatter:'sap.ui.sousa.PoApproval.util.Formatter.date'
+						}" />
+					<Text
+						text="{
+							path:'quantity',
+							formatter:'sap.ui.sousa.PoApproval.util.Formatter.quantity'
+						}" />
+					<ObjectNumber number="{netValue}" numberUnit="{currency}" />
+				</cells>
+			</ColumnListItem>
+		</Table>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button text="{i18n>ApproveButtonText}" type="Accept"
+						icon="sap-icon://accept" press="handleApprove" />
+					<Button text="{i18n>RejectButtonText}" type="Reject"
+						icon="sap-icon://decline" press="handleReject" />
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>
