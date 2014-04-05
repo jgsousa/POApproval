@@ -1,5 +1,4 @@
 jQuery.sap.require("sap.ui.sousa.PoApproval.util.Formatter");
-jQuery.sap.require("sap.ui.sousa.PoApproval.util.Grouper");
 
 sap.ui.controller("sap.ui.sousa.PoApproval.view.Master", {
 
@@ -29,21 +28,4 @@ sap.ui.controller("sap.ui.sousa.PoApproval.view.Master", {
 		this.nav.to("Detail", context);
 	},
 
-	handleGroup : function (evt) {
-
-		// compute sorters
-		var sorters = [];
-		var item = evt.getParameter("selectedItem");
-		var key = (item) ? item.getKey() : null;
-		if ("totalValue" === key || "LifecycleStatus" === key) {
-			sap.ui.sousa.PoApproval.util.Grouper.bundle = this.getView().getModel("i18n").getResourceBundle();
-			var grouper = sap.ui.sousa.PoApproval.util.Grouper[key];
-			sorters.push(new sap.ui.model.Sorter(key, true, grouper));
-		}
-
-		// update binding
-		var list = this.getView().byId("list");
-		var oBinding = list.getBinding("items");
-		oBinding.sort(sorters);
-	}
 });

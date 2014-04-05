@@ -31,14 +31,6 @@
 		</List>
 		<footer>
 			<Bar>
-				<contentRight>
-					<Select id="groupSelect" change="handleGroup" icon="sap-icon://group-2"
-						type="IconOnly" selectedKey="None" autoAdjustWidth="true">
-						<core:Item key="None" text="{i18n>MasterGroupNone}" />
-						<core:Item key="totalValue" text="{i18n>MasterGroupAmount}" />
-						<core:Item key="LifecycleStatus" text="{i18n>MasterGroupStatus}" />
-					</Select>
-				</contentRight>
 			</Bar>
 		</footer>
 	</Page>
